@@ -18,6 +18,13 @@ The **Bank System** project is a console-based application that simulates bankin
 - **List** all clients.
 - **Edit** client information.
 - **View** employee details.
+
+  ### 3. **Admin Module**
+- All **employee functionalities**.
+- **Add new employees.**
+- **Search** for employees.
+- **Edit** employee details.
+- **List** all employees.
   # How It Works
 
 ## **Object-Oriented Design**
@@ -39,14 +46,3 @@ Feel free to contribute by creating a pull request or reporting issues.
 ## **License**
 
 This project is open-source and available under the **MIT License**.
-
-Developed by:  
-[Your Name] - [Your GitHub Profile]
-
-
-### 3. **Admin Module**
-- All **employee functionalities**.
-- **Add new employees.**
-- **Search** for employees.
-- **Edit** employee details.
-- **List** all employees.
