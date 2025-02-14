@@ -1,9 +1,19 @@
 #include <iostream>
+#include "Person.h"
+#include "Client.h"
+#include "Employee.h"
+#include <Validation.h>
 
-using namespace std;
+int main() {
+    try {
+        Client c("Heba Mohamed", "12345678", 1000);
+        c.Display();
+    } catch (exception& e) {
+        cout << e.what() << endl;
+    }
 
-int main()
-{
-    cout << "Hello world!" << endl;
     return 0;
 }
+
+
+using namespace std;
