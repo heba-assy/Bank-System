@@ -75,7 +75,7 @@ public:
     //Display
     void Display(){
       Person::Display();
-      cout << "Balance: " << getBalance()<<endl;
+      cout << "Balance: " << getBalance()<<endl<<endl;
     }
 };
 

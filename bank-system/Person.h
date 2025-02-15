@@ -28,7 +28,7 @@ public:
        this->name=name;
        this->pass=pass;
        this->id=nextID;
-       nextId += rand() % 100 + 1; //To make ID increase rand between 1 to 100
+       nextID += rand() % 100 + 1; //To make ID increase rand between 1 to 100
     }
     //Setters & Getter
     int getId(){
