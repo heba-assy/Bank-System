@@ -6,46 +6,56 @@
 
 #include <iostream>
 
-class Employee:public Person{
+class Employee : public Person
+{
 private:
-    double salary=0;
+  double salary = 0;
+
 public:
-    Employee(string name, string pass, double salary):Person(name,pass){
-      if(!validator::isValidSalary(salary)){
-        throw Invalid_Salary();
-      }
-      this->salary=salary;
+  Employee( string name, string pass, double salary) : Person( name, pass)
+  {
+    while (!validator::isValidSalary(salary))
+    {
+      cout << Invalid_Salary().what() << endl
+           << "Please try again: ";
     }
-    int getId(){
-      return Person::getId();
+    this->salary = salary;
+  }
+
+    string toString() const
+    {
+        return to_string(id) + "," + name + "," + pass + "," + to_string(salary);
     }
-    string getName(){
-      return Person::getName();
+
+  void setSalary(double salary)
+  {
+    while (!validator::isValidSalary(salary))
+    {
+      cout << Invalid_Salary().what() << endl
+           << "Please try again: ";
+      cin >> salary;
     }
-    string getPassword(){
-      return Person::getPassword();
-    }
-    void setName(string name){
-      Person::setName(name);
-    }
-    void setPassword(string pass){
-      Person::setPassword(pass);
-    }
-    void setSalary(double salary){
-      if(!validator::isValidSalary(salary)){
-        throw Invalid_Salary();
-      }
-      this->salary=salary;
-    }
-    double getSalary(){
-      return salary;
-    }
-    //Display
-    void Display(){
-      Person::Display();
-      cout << "Salary: " << getSalary()<<endl;
-    }
-    //Methods
+    this->salary = salary;
+  }
+  double getSalary()
+  {
+    return salary;
+  }
+  // Display
+  void Display()
+  {
+    cout << "Role: Employee" << endl;
+    Person::Display();
+    cout << "Salary: " << getSalary() << endl
+         << "---------------------" << endl;
+  }
+  static Employee ParseToEmployee(string line)
+  {
+    vector<string> data = Parser::split(line);
+    Employee emp(data[1], data[2], stod(data[3]));
+    emp.id = stoi(data[0]);
+    return emp;
+  }
 
 
 };
