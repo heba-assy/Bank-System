@@ -15,19 +15,17 @@ private:
 public:
     Admin(string name, string pass, double salary) : Employee(name, pass, salary) {}
 
-    void SaveAdminData(const Admin &admin)
+
+
+    static Admin parseToAdmin(string line)
     {
-        ofstream file("Admin.txt", ios::app);
-        if (file.is_open())
-        {
-            file << admin.toString() << endl;
-            file.close();
-            cout << "Data Saved!\n";
-        }
-        else
-        {
-            cout << "Failed to save Data!\n";
-        }
+        vector<string> data = Parser::split(line);
+        // id=stoi(data[0]);
+        // return Admin( data[1], data[2], stod(data[3]));
+
+        Admin a(data[1], data[2], stod(data[3]));
+        a.id = stoi(data[0]);
+        return a;
     }
 };
 

@@ -12,7 +12,7 @@ private:
   double salary = 0;
 
 public:
-  Employee(string name, string pass, double salary) : Person(name, pass)
+  Employee( string name, string pass, double salary) : Person( name, pass)
   {
     while (!validator::isValidSalary(salary))
     {
@@ -22,27 +22,10 @@ public:
     this->salary = salary;
   }
 
-  string toString() const
-  {
-    return to_string(id) + "," + name + "," + pass + "," + to_string(salary);
-  }
-
-  void saveEmployeeData(const Employee &Employee)
-  {
-    ofstream file("Employees.txt",ios::app);
-    if(file.is_open())
+    string toString() const
     {
-      file<< Employee.toString()<<endl;
-      file.close();
-      cout<<"Data Saved!\n";
+        return to_string(id) + "," + name + "," + pass + "," + to_string(salary);
     }
-    else
-    {
-      cout<<"Failed to save Data!\n";
-    }
-    
-
-  }
 
   void setSalary(double salary)
   {
@@ -61,10 +44,20 @@ public:
   // Display
   void Display()
   {
+    cout << "Role: Employee" << endl;
     Person::Display();
     cout << "Salary: " << getSalary() << endl
          << "---------------------" << endl;
   }
+  static Employee ParseToEmployee(string line)
+  {
+    vector<string> data = Parser::split(line);
+    Employee emp(data[1], data[2], stod(data[3]));
+    emp.id = stoi(data[0]);
+    return emp;
+  }
+
+
 };
 
 #endif // EMPLOYEE_H

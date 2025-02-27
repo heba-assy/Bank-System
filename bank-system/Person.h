@@ -4,14 +4,16 @@
 #include <string>
 #include <cstdlib>
 #include "Validation.h"
+#include <vector>
+#include <sstream>
 
 using namespace std;
 
 class Person
 {
 protected:
-   static int nextID;
    int id;
+   static int nextID;
    string name;
    string pass;
 
@@ -32,8 +34,8 @@ public:
       }
       this->name = name;
       this->pass = pass;
-      id = nextID;
-      nextID += rand() % 100 + 1; // To make ID increase rand between 1 to 100
+      // nextID += rand() % 100 + 1; // To make ID increase rand between 1 to 100
+      id =++nextID;
    }
    // Setters & Getter
    int getId()
@@ -76,6 +78,25 @@ public:
       cout << "ID: " << getId() << endl;
       cout << "Name: " << getName() << endl;
       cout << "Password: " << getPassword() << endl;
+   }
+};
+int Person::nextID = 1000;
+
+
+class Parser
+{
+public:
+   static vector<string> split(string &line)
+   {
+      vector<string> res;
+      stringstream ss(line); //---------------------------------------
+      string item;
+
+      while (getline(ss, item, ','))
+      {
+         res.push_back(item);
+      }
+      return res;
    }
 };
 

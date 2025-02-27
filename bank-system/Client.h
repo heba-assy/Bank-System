@@ -4,6 +4,7 @@
 #include "Validation.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 class Client : public Person
 {
@@ -18,26 +19,6 @@ public:
          throw Invalid_Balance();
       }
       this->balance = balance;
-   }
-
-   string toString() const
-   {
-      return to_string(id) + "," + name + "," + pass + "," + to_string(balance);
-   }
-
-   void saveClientData(const Client &client)
-   {
-      ofstream file("Clients.txt", ios::app); 
-      if (file.is_open())
-      {
-         file << client.toString() << endl; 
-         file.close();
-         cout << "Data Saved!\n";
-      }
-      else
-      {
-         cout << "Failed to save!\n";
-      }
    }
 
    // Setters & Getters
@@ -94,9 +75,33 @@ public:
    {
       cout << "Your Balance is: " << balance << " Units." << endl;
    }
+
+   string toStringC() const
+   {
+      return to_string(id) + "," + name + "," + pass + "," + to_string(balance);
+   }
+
+   static Client parseToClient(string line)
+   {
+      // if(!line.empty()){
+      vector<string> data = Parser::split(line);
+
+      Client c(data[1], data[2], stod(data[3])); // stoi string to intger --stod string to double
+      c.id = stoi(data[0]);
+      return c;
+      // }
+      // return Client(0,"0","0",0);
+   }
+
+   void checkId()
+   {
+      ifstream file("LastClientId.txt");
+   }
+
    // Display
    void Display()
    {
+      cout << "Role: Client" << endl;
       Person::Display();
       cout << "Balance: " << getBalance() << endl
            << "---------------------" << endl;
