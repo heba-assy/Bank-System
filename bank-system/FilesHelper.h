@@ -40,14 +40,14 @@ public:
 
     static void saveClient(const Client &client) // to Create file -- ios ::app to save all data
     {
-        ofstream file("Clients.txt", ios::app);
+        ofstream file("Data/Clients.txt", ios::app);
         if (file.is_open())
         {
             file << client.toStringC() << endl;
             file.close();
             cout << "Data Saved!\n";
 
-            FilesHelper::saveLast("LastIdClient.txt", FilesHelper::getLast("LastIdClient.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdClient.txt", FilesHelper::getLast("Data/LastIdClient.txt") + 1);
         }
         else
         {
@@ -57,13 +57,13 @@ public:
 
     static void saveEmployee(const Employee &Employee)
     {
-        ofstream file("Employees.txt", ios::app);
+        ofstream file("Data/Employees.txt", ios::app);
         if (file.is_open())
         {
             file << Employee.toString() << endl;
             file.close();
             cout << "Data Saved!\n";
-            FilesHelper::saveLast("LastIdEmp.txt", FilesHelper::getLast("LastIdEmp.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdEmp.txt", FilesHelper::getLast("Data/LastIdEmp.txt") + 1);
         }
         else
         {
@@ -73,13 +73,13 @@ public:
 
     static void SaveAdmin(const Admin &admin)
     {
-        ofstream file("Admins.txt", ios::app);
+        ofstream file("Data/Admins.txt", ios::app);
         if (file.is_open())
         {
             file << admin.toString() << endl;
             file.close();
             cout << "Data Saved!\n";
-            FilesHelper::saveLast("LastIdAd.txt", FilesHelper::getLast("LastIdAd.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdAd.txt", FilesHelper::getLast("Data/LastIdAd.txt") + 1);
         }
         else
         {
@@ -89,7 +89,7 @@ public:
 
     static void getClients()
     {
-        ifstream file("Clients.txt");
+        ifstream file("Data/Clients.txt");
         if (!file)
         {
             cout << "The File isn't Exist" << endl;
@@ -112,7 +112,7 @@ public:
 
     static void getEmployees()
     {
-        ifstream Efile("Employees.txt");
+        ifstream Efile("Data/Employees.txt");
         vector<Employee> Employees;
         string line;
         while (getline(Efile, line))
@@ -128,7 +128,7 @@ public:
 
     static void getAdmins()
     {
-        ifstream Afile("Admin.txt");
+        ifstream Afile("Data/Admin.txt");
         vector<Admin> Admins;
         string line;
         while (getline(Afile, line))

@@ -35,7 +35,7 @@ int main()
     // Client c5("Ahmed", "22232425", 5000);
     FilesHelper::getClients();
 
-    FilesHelper::ClearFile("Clients.txt", "LastIdClient.txt");
+    FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient.txt");
 
     // =====================================================
     // Employee e2(12, "mohamed", "15132115", 6000);

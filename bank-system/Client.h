@@ -95,7 +95,7 @@ public:
 
    void checkId()
    {
-      ifstream file("LastClientId.txt");
+      ifstream file("Data/LastClientId.txt");
    }
 
    // Display
