@@ -3,8 +3,8 @@
 #include <vector>
 #include "Person.h"
 #include "Client.h"
-#include "Employee.h"
-#include "Admin.h"
+
+// #include "Admin.h"
 
 using namespace std;
 
@@ -31,7 +31,7 @@ public:
     {
         ifstream file(filename);
         int lastid = 0;
-        if (file.is_open() && file >> lastid)
+        if (file.is_open() && file >> lastid) //----------------------------
         {
             file.close();
         }
@@ -148,4 +148,20 @@ public:
         cout<<"Data Cleared!"<<endl;
 
     }
+};
+
+class DataSourceInterface
+{
+public:
+    virtual void addClient(Client &c) = 0;
+    virtual void addEmployee(Employee &e) = 0;
+    virtual void addAdmin(Admin &a) = 0;
+
+    virtual void getAllClients() = 0;
+    virtual void getAllEmployees() = 0;
+    virtual void getAllAdmin() = 0;
+
+    virtual void removeAllClients() = 0;
+    virtual void removeAllEmployees() = 0;
+    virtual void removeAllAdmin() = 0;
 };

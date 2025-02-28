@@ -93,10 +93,7 @@ public:
       // return Client(0,"0","0",0);
    }
 
-   void checkId()
-   {
-      ifstream file("Data/LastClientId.txt");
-   }
+
 
    // Display
    void Display()

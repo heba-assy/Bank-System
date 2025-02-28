@@ -3,7 +3,6 @@
 #include "Validation.h"
 #include "Person.h"
 #include "Client.h"
-
 #include <iostream>
 
 class Employee : public Person
@@ -12,7 +11,7 @@ private:
   double salary = 0;
 
 public:
-  Employee( string name, string pass, double salary) : Person( name, pass)
+  Employee(string name, string pass, double salary) : Person(name, pass)
   {
     while (!validator::isValidSalary(salary))
     {
@@ -22,10 +21,10 @@ public:
     this->salary = salary;
   }
 
-    string toString() const
-    {
-        return to_string(id) + "," + name + "," + pass + "," + to_string(salary);
-    }
+  string toString() const
+  {
+    return to_string(id) + "," + name + "," + pass + "," + to_string(salary);
+  }
 
   void setSalary(double salary)
   {
@@ -57,7 +56,90 @@ public:
     return emp;
   }
 
+  void addClient(Client &c)
+  {
+    ofstream file("Data/Clients.txt", ios::app);
+    if (file.is_open())
+    {
+      file << c.toStringC() << endl;
+      file.close();
+      cout << "Data Saved!\n";
+    }
+    else
+    {
+      cout << "Failed to save!\n";
+    }
 
+    ofstream file1("Data/LastIdClient.txt", ios::trunc);
+    if (file1.is_open())
+    {
+      file1 << c.getId();
+      file1.close();
+    }
+    else
+    {
+      cout << "Can't open file LastIdClient" << endl;
+    }
+  }
+
+  void SearchClient(int id)
+  {
+    ifstream file("Data/Clients.txt");
+    if (!file)
+    {
+      cout << "The File isn't Exist" << endl;
+      return;
+    }
+    vector<int> Ids;
+    vector<Client> clients;
+    string line;
+    while (getline(file, line))
+    {
+      clients.push_back(Client::parseToClient(line));
+    }
+
+    file.close();
+    for (int i = 0; i < clients.size(); i++)
+    {
+      Ids.push_back(clients[i].getId());
+    }
+
+    for (int i = 0; i < Ids.size(); i++)
+    {
+      if (Ids[i] == id)
+      {
+        clients[i].Display();
+        return;
+      }
+    }
+    cout << "Id not found" << endl;
+  }
+
+  void listCilent()
+  {
+    ifstream file("Data/Clients.txt");
+    if (!file)
+    {
+      cout << "The File isn't Exist" << endl;
+      return;
+    }
+    vector<Client> clients;
+    string line;
+    while (getline(file, line))
+    {
+      clients.push_back(Client::parseToClient(line));
+    }
+
+    file.close();
+
+    for (Client &c : clients)
+    {
+      c.Display();
+    }
+  }
+  void editClient(int id, string name, string pass, double balance)
+  {
+  }
 };
 
 #endif // EMPLOYEE_H
