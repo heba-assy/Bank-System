@@ -94,6 +94,13 @@ public:
    }
 
 
+    friend std::ostream& operator<<(std::ostream& os, const Client& client) {
+
+        os << "Client Name: " << client.name<<endl << "ID: " << client.id<<endl << "Balance: " << client.balance<<endl;
+
+        return os;
+
+    }
 
    // Display
    void Display()

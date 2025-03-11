@@ -11,6 +11,9 @@ private:
   double salary = 0;
 
 public:
+
+
+
   Employee(string name, string pass, double salary) : Person(name, pass)
   {
     while (!validator::isValidSalary(salary))
@@ -58,6 +61,14 @@ public:
 
   void addClient(Client &c)
   {
+
+
+    // FilesHelper::saveClient(c);
+
+
+
+
+
     ofstream file("Data/Clients.txt", ios::app);
     if (file.is_open())
     {
@@ -82,15 +93,14 @@ public:
     }
   }
 
-  void SearchClient(int id)
+  Client* SearchClient(int id)
   {
     ifstream file("Data/Clients.txt");
-    if (!file)
-    {
-      cout << "The File isn't Exist" << endl;
-      return;
-    }
-    vector<int> Ids;
+    // if (!file)
+    // {
+    //   cout << "The File isn't Exist" << endl;
+    //   return nullptr;
+    // }
     vector<Client> clients;
     string line;
     while (getline(file, line))
@@ -99,20 +109,17 @@ public:
     }
 
     file.close();
+
+
     for (int i = 0; i < clients.size(); i++)
     {
-      Ids.push_back(clients[i].getId());
-    }
-
-    for (int i = 0; i < Ids.size(); i++)
-    {
-      if (Ids[i] == id)
+      if (clients[i].getId() == id)
       {
-        clients[i].Display();
-        return;
+        Client* p =new Client (clients[i]);
+        return p;
       }
     }
-    cout << "Id not found" << endl;
+    return nullptr;
   }
 
   void listCilent()
@@ -139,6 +146,8 @@ public:
   }
   void editClient(int id, string name, string pass, double balance)
   {
+    Employee::SearchClient(id);
+    
   }
 };
 

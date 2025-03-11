@@ -19,18 +19,13 @@ int main()
     // Client c5("Ahmed", "22232425", 5000);
     // FilesHelper::getClients();
 
-    // FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient.txt");
-
     // =====================================================
     Employee e2("mohamed", "15132115", 6000);
-    // FilesHelper::saveEmployee(e2);
-    // e2.SearchClient(1004);
-    // e2.listCilent();
-    // Employee::getEmployees();
-
+    e2.addClient(c);
+    FilesHelper::getClients();
     // =============================================================
-    Admin a("moahmed", "32326445", 61112);
-    a.listEmpolyee();
+    // Admin a(13,"moahmed","32326445",61112);
+    // Admin::getAdmins();
 
     return 0;
 }
