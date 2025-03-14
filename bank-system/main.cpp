@@ -21,11 +21,15 @@ int main()
 
     // =====================================================
     Employee e2("mohamed", "15132115", 6000);
-    e2.addClient(c);
-    FilesHelper::getClients();
+    // e2.editClient(1002,"heba assy","012022323",3000);
+    // FilesHelper::getClients();
     // =============================================================
-    // Admin a(13,"moahmed","32326445",61112);
-    // Admin::getAdmins();
+    Admin a("moahmed","32326445",61112);
+    
+    // FilesHelper::SaveAdmin(a);
+    // FilesHelper::ClearFile("Data/Admins.txt","Data/LastIdAd.txt");
+    a.editEmployee(1004,"eosososo","0125565665",7000);
+    FilesHelper::getEmployees();
 
     return 0;
 }

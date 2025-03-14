@@ -30,7 +30,7 @@ public:
     static int getLast(string filename)
     {
         ifstream file(filename);
-        int lastid = 0;
+        int lastid = 1000;
         if (file.is_open() && file >> lastid) //----------------------------
         {
             file.close();
@@ -128,7 +128,7 @@ public:
 
     static void getAdmins()
     {
-        ifstream Afile("Data/Admin.txt");
+        ifstream Afile("Data/Admins.txt");
         vector<Admin> Admins;
         string line;
         while (getline(Afile, line))

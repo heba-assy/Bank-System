@@ -13,6 +13,23 @@ private:
     double salary = 0;
 
 public:
+    vector<Employee> allEmployees()
+    {
+        ifstream file("Data/Employees.txt");
+        if (!file)
+        {
+            cout << "The File isn't Exist" << endl;
+            return vector<Employee>();
+        }
+        vector<Employee> emps;
+        string line;
+        while (getline(file, line))
+        {
+            emps.push_back(Employee::ParseToEmployee(line));
+        }
+        file.close();
+        return emps;
+    }
     Admin(string name, string pass, double salary) : Employee(name, pass, salary) {}
 
     static Admin parseToAdmin(string line)
@@ -50,55 +67,58 @@ public:
             cout << "Can't open file LastIdClient" << endl;
         }
     }
-    void searchEmployee(int id)
+    Employee *searchEmployee(int id)
     {
-        ifstream file("Data/Empolyees.txt");
-        if (!file)
+        vector<Employee> emps = allEmployees();
+        for (int i = 0; i < emps.size(); i++)
         {
-            cout << "The File isn't Exist" << endl;
-            return;
-        }
-        vector<int> Ids;
-        vector<Employee> Employees;
-        string line;
-        while (getline(file, line))
-        {
-            Employees.push_back(Employee::ParseToEmployee(line));
-        }
-
-        file.close();
-        for (int i = 0; i < Employees.size(); i++)
-        {
-            Ids.push_back(Employees[i].getId());
-        }
-
-        for (int i = 0; i < Ids.size(); i++)
-        {
-            if (Ids[i] == id)
+            if (emps[i].getId() == id)
             {
-                Employees[i].Display();
-                return;
+                Employee *p = new Employee(emps[i]);
+                return p;
             }
         }
-        cout << "Id not found" << endl;
-    }
-    void editEmployee(int id, string name, string pass, double salary)
-    {
+        return nullptr;
     }
     void listEmpolyee()
     {
-        ifstream Efile("Data/Employees.txt");
-        vector<Employee> Employees;
-        string line;
-        while (getline(Efile, line))
-        {
-            Employees.push_back(Employee::ParseToEmployee(line));
-        }
-        Efile.close();
-        for (Employee &e : Employees)
+        vector<Employee> emps = allEmployees();
+        for (Employee &e : emps)
         {
             e.Display();
         }
+    }
+    void editEmployee(int id, string name, string pass, double salary)
+    {
+        vector<Employee> emps = allEmployees();
+        if (Admin::searchEmployee(id) == 0)
+        {
+            cout << "Employee is not Exist!" << endl;
+            return;
+        }
+        for (Employee &c : emps)
+        {
+            if (c.getId() == id)
+            {
+                c.setName(name);
+                c.setPassword(pass);
+                c.setSalary(salary);
+                break;
+            }
+        }
+        ofstream file("Data/Employees.txt");
+        if (!file)
+        {
+            cout << "Error opening file!" << endl;
+            return;
+        }
+        for (Employee &c : emps)
+        {
+            file << c.toString() << endl;
+        }
+
+        file.close();
+        cout << "Employee Updated Successfully!\n";
     }
 };
 
