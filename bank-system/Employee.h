@@ -99,7 +99,6 @@ public:
       cout << "Can't open file LastIdClient" << endl;
     }
   }
-
   Client *SearchClient(int id)
   {
     vector<Client> clients = allClients();
@@ -113,7 +112,6 @@ public:
     }
     return nullptr;
   }
-
   void listCilent()
   {
     vector<Client> clients = allClients();

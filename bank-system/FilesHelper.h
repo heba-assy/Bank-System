@@ -3,8 +3,8 @@
 #include <vector>
 #include "Person.h"
 #include "Client.h"
-
-// #include "Admin.h"
+#include "Employee.h"
+#include "Admin.h"
 
 using namespace std;
 
@@ -38,12 +38,19 @@ public:
         return lastid;
     }
 
-    static void saveClient(const Client &client) // to Create file -- ios ::app to save all data
+    static void saveClient(Client &c) // to Create file -- ios ::app to save all data
     {
+        Employee e("bobosnet", "0123336363636", 8000);
+        if (!e.SearchClient(c.getId()) == 0)
+        {
+            cout << "The Client Already Exists!" << endl;
+            return;
+        }
+
         ofstream file("Data/Clients.txt", ios::app);
         if (file.is_open())
         {
-            file << client.toStringC() << endl;
+            file << c.toStringC() << endl;
             file.close();
             cout << "Data Saved!\n";
 
@@ -145,8 +152,7 @@ public:
         ofstream file(fileName, ios::trunc);
         FilesHelper::saveLast(lastidfile, FilesHelper::getLast(fileName) - FilesHelper::getLast(fileName));
         file.close();
-        cout<<"Data Cleared!"<<endl;
-
+        cout << "Data Cleared!" << endl;
     }
 };
 

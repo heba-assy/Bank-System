@@ -83,24 +83,20 @@ public:
 
    static Client parseToClient(string line)
    {
-      // if(!line.empty()){
       vector<string> data = Parser::split(line);
-
       Client c(data[1], data[2], stod(data[3])); // stoi string to intger --stod string to double
       c.id = stoi(data[0]);
       return c;
-      // }
-      // return Client(0,"0","0",0);
    }
 
+   friend std::ostream &operator<<(std::ostream &os, const Client &client) // to can use the operator (<<) in pointer client (*Client)
+   {
+      os << "Name: " << client.name << endl
+         << "ID: " << client.id << endl
+         << "Balance: " << client.balance << endl;
 
-   //  friend std::ostream& operator<<(std::ostream& os, const Client& client) {
-
-   //      os << "Client Name: " << client.name<<endl << "ID: " << client.id<<endl << "Balance: " << client.balance<<endl;
-
-   //      return os;
-
-   //  }
+      return os;
+   }
 
    // Display
    void Display()

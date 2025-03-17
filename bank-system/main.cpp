@@ -10,7 +10,7 @@
 int main()
 {
     Client c("Heba Mohamed", "12345678", 2000);
-    // FilesHelper::saveClient(c);
+    FilesHelper::saveClient(c);
     Client c2("Mohamed", "910111213", 2500);
     // FilesHelper::saveClient(c2);
     Client c3("Marwan", "14151617", 3000);
@@ -21,15 +21,15 @@ int main()
 
     // =====================================================
     Employee e2("mohamed", "15132115", 6000);
-    // e2.editClient(1002,"heba assy","012022323",3000);
+    // cout<<*e2.SearchClient(1001);
     // FilesHelper::getClients();
     // =============================================================
-    Admin a("moahmed","32326445",61112);
-    
+    Admin a("moahmed", "32326445", 61112);
+
     // FilesHelper::SaveAdmin(a);
     // FilesHelper::ClearFile("Data/Admins.txt","Data/LastIdAd.txt");
-    a.editEmployee(1004,"eosososo","0125565665",7000);
-    FilesHelper::getEmployees();
+    // a.editEmployee(1004,"eosososo","0125565665",7000);
+    // FilesHelper::getEmployees();
 
     return 0;
 }
