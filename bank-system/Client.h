@@ -101,7 +101,6 @@ public:
    // Display
    void Display()
    {
-      cout << "Role: Client" << endl;
       Person::Display();
       cout << "Balance: " << getBalance() << endl
            << "---------------------" << endl;
