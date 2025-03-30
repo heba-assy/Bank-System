@@ -1,0 +1,4 @@
+1050,Heba Mohamed,pass12345,2000.5
+1132,Ahmed Ali,ahmed456,3500.75
+1210,Salma Mostafa,salma789,5000
+1055,Asmaa,Asmaa123,12000.5

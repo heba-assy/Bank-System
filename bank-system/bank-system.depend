@@ -1,51 +1,152 @@
 # depslib dependency file v1.0
-1739563190 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\admin.cpp
+1743305051 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\admin.cpp
 	"Admin.h"
+	"FilesHelper.h"
+	"fileManager.h"
+	"Parser.h"
+	"Employee.h"
 
-1739564342 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\admin.h
-	"Validation.h"
+1741996418 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\admin.h
+	<vector>
+	"Employee.h"
+	<string>
+
+1743290351 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\person.cpp
 	"Person.h"
-	"Client.h"
 	<iostream>
 
-1739630479 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\person.cpp
-	"Person.h"
-
-1739459087 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\client.cpp
+1743213517 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\client.cpp
 	"Client.h"
-
-1739631487 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\client.h
-	"Person.h"
+	"FilesHelper.h"
 	"Validation.h"
 	<iostream>
 
-1739631120 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\person.h
+1740949283 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\client.h
+	"Person.h"
+	"Validation.h"
+	"FilesHelper.h"
+	<iostream>
+
+1743212423 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\person.h
 	<iostream>
 	<string>
 	<cstdlib>
 	"Validation.h"
 
-1739558052 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\validation.h
+1740874285 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\validation.h
 	<string>
+
+1740874200 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\validation.cpp
+	"Validation.h"
 	<cctype>
-	<exception>
 
-1739459092 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\validation.cpp
-	"Validation.h"
-
-1739631454 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\main.cpp
+1743352447 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\main.cpp
 	<iostream>
+	"Client.h"
+	"ClientManager.h"
+	" EmployeeManager.h"
+	"AdminManager.h"
+	"Validation.h"
+	"Screens.h"
+
+1743135050 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\employee.h
+	<vector>
 	"Person.h"
+	"Validation.h"
+	"FilesHelper.h"
+	"Client.h"
+	<iostream>
+
+1743290925 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\employee.cpp
+	"Employee.h"
+	"FilesHelper.h"
+	"fileManager.h"
+	"Parser.h"
+	<iostream>
+
+1740571856 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\filemanager.cpp
+	"fileManager.h"
+
+1740574724 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\filemanager.h
+	"DataSourceInterface.h"
 	"Client.h"
 	"Employee.h"
-	<Validation.h>
+	"Admin.h"
+	<fstream>
+	"FilesHelper.h"
 
-1739564367 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\employee.h
-	"Validation.h"
+1743358733 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\include\fileshelper.h
+	<string>
+	<vector>
+
+1740574732 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\include\datasourceinterface.h
+	"../Client.h"
+	"../Employee.h"
+	"../Admin.h"
+
+1739979165 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\src\datasourceinterface.cpp
+	"DataSourceInterface.h"
+
+1743304954 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\src\fileshelper.cpp
+	"FilesHelper.h"
+	"../Client.h"
+	<fstream>
+	<vector>
+	"Parser.h"
+
+1741110176 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\src\parser.cpp
+	"Parser.h"
+	<vector>
+
+1740868734 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\include\parser.h
+	<sstream>
+	<vector>
+	"../Client.h"
+	"../Employee.h"
+	"../Admin.h"
+
+1740870113 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\clientmanger.cpp
+	"ClientManger.h"
+	"Client.h"
+	"Employee.h"
+	<vector>
+	<fstream>
+	"Parser.h"
+
+1740854461 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\clientmanger.h
 	"Person.h"
 	"Client.h"
-	<iostream>
 
-1739459997 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\employee.cpp
+1743358733 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\clientmanager.cpp
+	"ClientManager.h"
+	"Client.h"
 	"Employee.h"
+	<vector>
+	<fstream>
+	"Parser.h"
+	"FilesHelper.h"
+
+1743303845 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\ employeemanager.h
+	"Employee.h"
+
+1743295569 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\ employeemanager.cpp
+	" EmployeeManager.h"
+
+1743133654 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\clientmanager.h
+	"Person.h"
+	"Client.h"
+
+1743303772 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\adminmanager.h
+	"Admin.h"
+
+1743305175 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\adminmanager.cpp
+	"AdminManager.h"
+
+1743348217 d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\include\screens.h
+
+1743356271 source:d:\heba\programming\programming fundamentals diploma\projects\bank project\bank-system\bank-system\src\screens.cpp
+	"Screens.h"
+	"../ClientManager.h"
+	"../ EmployeeManager.h"
+	"../AdminManager.h"
 

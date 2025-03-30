@@ -1,53 +1,23 @@
 #ifndef ADMIN_H
 #define ADMIN_H
-#include "Validation.h"
-#include "Person.h"
-#include "Client.h"
+#pragma once
+#include <vector>
+#include "Employee.h"
+#include <string>
 
-#include <iostream>
-
-class Admin:public Person{
-private:
-    double salary=0;
+class Admin : public Employee {
 public:
-    Admin(string name, string pass, double salary):Person(name,pass){
-      if(!validator::isValidSalary(salary)){
-        throw Invalid_Salary();
-      }
-      this->salary=salary;
-    }
-    int getId(){
-      return Person::getId();
-    }
-    string getName(){
-      return Person::getName();
-    }
-    string getPassword(){
-      return Person::getPassword();
-    }
-    void setName(string name){
-      Person::setName(name);
-    }
-    void setPassword(string pass){
-      Person::setPassword(pass);
-    }
-    void setSalary(double salary){
-      if(!validator::isValidSalary(salary)){
-        throw Invalid_Salary();
-      }
-      this->salary=salary;
-    }
-    double getSalary(){
-      return salary;
-    }
-    //Display
-    void Display(){
-      Person::Display();
-      cout << "Salary: " << getSalary()<<endl;
-    }
+    // Constructor for creating a new Admin (ID is automatically assigned)
+    Admin(string name, string pass, double salary);
+
+    // Constructor for loading an existing Admin from a file (ID is passed explicitly)
+    Admin(int id, string name, string pass, double salary);
+
     //Methods
-
-
+    void addEmployee(Employee& employee);
+    Employee* searchEmployee(int id);
+    void editEmployee(int id, string name, string password, double salary);
+    void listEmployee();
 };
 
 #endif // ADMIN_H

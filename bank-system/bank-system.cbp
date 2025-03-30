@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="../bank-system" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="../bank-system" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,17 +36,29 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename=" EmployeeManager.cpp" />
+		<Unit filename=" EmployeeManager.h" />
 		<Unit filename="Admin.cpp" />
 		<Unit filename="Admin.h" />
 		<Unit filename="Client.cpp" />
 		<Unit filename="Client.h" />
+		<Unit filename="ClientManager.cpp" />
+		<Unit filename="ClientManager.h" />
 		<Unit filename="Employee.cpp" />
 		<Unit filename="Employee.h" />
 		<Unit filename="Person.cpp" />
 		<Unit filename="Person.h" />
 		<Unit filename="Validation.cpp" />
 		<Unit filename="Validation.h" />
+		<Unit filename="fileManager.cpp" />
+		<Unit filename="fileManager.h" />
+		<Unit filename="include/DataSourceInterface.h" />
+		<Unit filename="include/FilesHelper.h" />
+		<Unit filename="include/Parser.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/DataSourceInterface.cpp" />
+		<Unit filename="src/FilesHelper.cpp" />
+		<Unit filename="src/Parser.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
