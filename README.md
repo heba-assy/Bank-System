@@ -1,48 +1,48 @@
-# Project Overview
+# **Project Overview**  
 
-The **Bank System** project is a console-based application that simulates banking operations. It provides functionalities for clients, employees, and administrators, ensuring secure transactions and user management. The system follows **Object-Oriented Programming (OOP)** principles and implements file handling for data persistence.
+The **Bank System** is a console-based application that simulates banking operations for **clients, employees, and administrators**. It follows **Object-Oriented Programming (OOP)** principles and implements **file handling** for data persistence.  
 
-## Features
+## **# Features**  
 
-### 1. **Client Module**
-- **Login** with ID and password.
-- **Deposit** money.
-- **Withdraw** money.
-- **Check balance.**
-- **Transfer** money to another client.
+### **## Client Module (Managed by ClientManager)**  
+- **Secure Login** using ID and password.  
+- **Deposit & Withdraw** money.  
+- **Check balance.**  
+- **Transfer** money to another client.  
+- **Update password securely.**  
 
-### 2. **Employee Module**
-- **Login** with ID and password.
-- **Add new clients.**
-- **Search** for clients by ID.
-- **List** all clients.
-- **Edit** client information.
-- **View** employee details.
+### **## Employee Module (Managed by EmployeeManager)**  
+- **Login** as an employee.  
+- **Create & manage client accounts.**  
+- **Search for clients** by ID.  
+- **View and update client details.**  
+- **List all registered clients.**  
 
-  ### 3. **Admin Module**
-- All **employee functionalities**.
-- **Add new employees.**
-- **Search** for employees.
-- **Edit** employee details.
-- **List** all employees.
-  # How It Works
+### **## Admin Module (Managed by AdminManager)**  
+- **All employee functionalities.**  
+- **Create & manage employee accounts.**  
+- **Search for employees.**  
+- **Edit employee details.**  
+- **List all employees.**  
 
-## **Object-Oriented Design**
+## **# How It Works**  
 
-- **Person Base Class** → Inherited by **Client** and **Employee**.
-- **Employee Class** → Inherited by **Admin**.
-- **Validation Class** → Provides static validation functions.
-- **FileManager Class** → Handles data storage and retrieval.
+### **## Object-Oriented Design Enhancements**  
+- **Screens Class** → Manages all user interface screens.  
+- **ClientManager, EmployeeManager, AdminManager** → Handle respective functionalities.  
+- **Person Base Class** → Parent of **Client** and **Employee**.  
+- **Employee Class** → Inherited by **Admin**.  
+- **Validation Class** → Provides input validation.  
+- **FileManager Class** → Handles all file operations.  
 
-## **File Handling**
+### **## File Handling Improvements**  
+- Now handled by **FilesHelper** for better efficiency.  
+- All data updates (**clients, employees, admins**) are **automatically saved** after changes.  
 
-- **Client**, **Employee**, and **Admin** data are stored in **.txt** files.
-- **FileManager class** reads and writes data efficiently.
+## **# Contribution**  
+- Fork the repository and create a **new feature branch**.  
+- Follow **OOP principles** and ensure **proper separation of concerns**.  
+- Test changes before submitting a **pull request**.  
 
-## **Contribution**
-
-Feel free to contribute by creating a pull request or reporting issues.
-
-## **License**
-
-This project is open-source and available under the **MIT License**.
+## **# License**  
+This project is open-source and available under the **MIT License**.  
