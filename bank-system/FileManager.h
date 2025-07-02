@@ -1,3 +1,4 @@
+#pragma once
 #include "FilesHelper.h"
 class DataSourceInterface
 {
@@ -16,33 +17,50 @@ public:
 };
 class FileManager : public DataSourceInterface
 {
-    void addClient(Client &c){
+public:
+    void addClient(Client &c)
+    {
         FilesHelper::saveClient(c);
     }
-    void addEmployee(Employee &e){
+    void addEmployee(Employee &e)
+    {
         FilesHelper::saveEmployee(e);
     }
-    void addAdmin(Admin &a){
+    void addAdmin(Admin &a)
+    {
         FilesHelper::SaveAdmin(a);
     }
 
-    void getAllClients(){
+    void getAllClients()
+    {
         FilesHelper::getClients();
     }
-    void getAllEmployees(){
+    void getAllEmployees()
+    {
         FilesHelper::getEmployees();
     }
-    void getAllAdmin(){
+    void getAllAdmin()
+    {
         FilesHelper::getAdmins();
     }
 
-    void removeAllClients(){
+    void removeAllClients()
+    {
         FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient");
     }
-    void removeAllEmployees() {
+    void removeAllEmployees()
+    {
         FilesHelper::ClearFile("Data/Empolyees.txt", "Data/LastIdClient");
     }
-    void removeAllAdmin() {
-        FilesHelper::ClearFile("Data/Admins.txt","Data/LastIdAdmin");
+    void removeAllAdmin()
+    {
+        FilesHelper::ClearFile("Data/Admins.txt", "Data/LastIdAdmin");
     }
+    // static void updateClients() // not working
+    // {
+    //     Employee e;
+    //     FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient");
+    //     for (auto& c : e.allClients())
+    //         e.addClient(c);
+    // }
 };

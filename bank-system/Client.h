@@ -12,6 +12,7 @@ private:
    double balance = 0;
 
 public:
+   Client (): Person(){}
    Client(string name, string pass, double balance) : Person(name, pass)
    {
       if (!validator::isValidBalance(balance))
@@ -84,7 +85,10 @@ public:
    static Client parseToClient(string line)
    {
       vector<string> data = Parser::split(line);
-      Client c(data[1], data[2], stod(data[3])); // stoi string to intger --stod string to double
+      Client c; // stoi string to intger --stod string to double
+      c.balance=(stod(data[3]));
+      c.pass=(data[2]);
+      c.name=(data[1]);
       c.id = stoi(data[0]);
       return c;
    }

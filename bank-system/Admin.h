@@ -30,6 +30,7 @@ public:
         file.close();
         return emps;
     }
+    Admin(){}
     Admin(string name, string pass, double salary) : Employee(name, pass, salary) {}
 
     static Admin parseToAdmin(string line)

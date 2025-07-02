@@ -28,7 +28,7 @@ public:
     file.close();
     return clients;
   }
-
+  Employee() : Person() {}
   Employee(string name, string pass, double salary) : Person(name, pass)
   {
     while (!validator::isValidSalary(salary))

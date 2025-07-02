@@ -48,7 +48,8 @@
         "fstream": "cpp",
         "cstdarg": "cpp",
         "cstring": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "*.mq5": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

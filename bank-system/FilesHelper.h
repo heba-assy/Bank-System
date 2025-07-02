@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,6 +15,35 @@ protected:
     static int lastid;
 
 public:
+    static int getlastid(string filename)
+    {
+        ifstream file(filename);
+        int maxid = 1000;
+        string line;
+
+        if (file.is_open())
+        {
+            while (getline(file, line))
+            {
+                if (line.empty())
+                {
+                    continue;
+                }
+                Client c = Client::parseToClient(line);
+                if (c.getId() > maxid)
+                {
+                    maxid = c.getId();
+                }
+            }
+            file.close();
+        }
+        else
+        {
+            cout << "Failed to open Clients.txt\n";
+        }
+        return maxid;
+    }
+
     static void saveLast(string filename, int id)
     {
         ofstream file(filename, ios::trunc);
@@ -40,7 +70,7 @@ public:
 
     static void saveClient(Client &c) // to Create file -- ios ::app to save all data
     {
-        Employee e("bobosnet", "0123336363636", 8000);
+        Employee e;
         if (!e.SearchClient(c.getId()) == 0)
         {
             cout << "The Client Already Exists!" << endl;
@@ -54,7 +84,7 @@ public:
             file.close();
             cout << "Data Saved!\n";
 
-            FilesHelper::saveLast("Data/LastIdClient.txt", FilesHelper::getLast("Data/LastIdClient.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdClient.txt", FilesHelper::getlastid("Data/Clients.txt"));
         }
         else
         {
@@ -62,15 +92,22 @@ public:
         }
     }
 
-    static void saveEmployee(const Employee &Employee)
+    static void saveEmployee(Employee &E)
     {
+        Admin a;
+        if (a.searchEmployee(E.getId()) != 0)
+        {
+            cout << "The Employee Already Exists!" << endl;
+            return;
+        }
+
         ofstream file("Data/Employees.txt", ios::app);
         if (file.is_open())
         {
-            file << Employee.toString() << endl;
+            file << E.toString() << endl;
             file.close();
             cout << "Data Saved!\n";
-            FilesHelper::saveLast("Data/LastIdEmp.txt", FilesHelper::getLast("Data/LastIdEmp.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdEmp.txt", FilesHelper::getlastid("Data/Employees.txt"));
         }
         else
         {
@@ -86,14 +123,14 @@ public:
             file << admin.toString() << endl;
             file.close();
             cout << "Data Saved!\n";
-            FilesHelper::saveLast("Data/LastIdAd.txt", FilesHelper::getLast("Data/LastIdAd.txt") + 1);
+            FilesHelper::saveLast("Data/LastIdAd.txt", FilesHelper::getlastid("Data/Admins.txt"));
         }
         else
         {
             cout << "Failed to save Data!\n";
         }
     }
-
+    // static vector<Client> AllClients;
     static void getClients()
     {
         ifstream file("Data/Clients.txt");
@@ -102,12 +139,15 @@ public:
             cout << "The File isn't Exist" << endl;
             return;
         }
+        // AllClients.clear();
         vector<Client> clients;
         string line;
         while (getline(file, line))
         {
-            clients.push_back(Client::parseToClient(line));
+            Client c = Client::parseToClient(line);
+            clients.push_back(c);
         }
+        // AllClients = clients;
 
         file.close();
 
@@ -154,20 +194,4 @@ public:
         file.close();
         cout << "Data Cleared!" << endl;
     }
-};
-
-class DataSourceInterface
-{
-public:
-    virtual void addClient(Client &c) = 0;
-    virtual void addEmployee(Employee &e) = 0;
-    virtual void addAdmin(Admin &a) = 0;
-
-    virtual void getAllClients() = 0;
-    virtual void getAllEmployees() = 0;
-    virtual void getAllAdmin() = 0;
-
-    virtual void removeAllClients() = 0;
-    virtual void removeAllEmployees() = 0;
-    virtual void removeAllAdmin() = 0;
 };

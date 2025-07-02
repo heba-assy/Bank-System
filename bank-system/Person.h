@@ -11,13 +11,12 @@ using namespace std;
 
 class Person
 {
-protected:
+public:
    int id;
    static int nextID;
    string name;
    string pass;
-
-public:
+   Person() { }
    Person(string name, string pass)
    {
       while (!validator::isValidName(name))
@@ -35,7 +34,7 @@ public:
       this->name = name;
       this->pass = pass;
       // nextID += rand() % 100 + 1; // To make ID increase rand between 1 to 100
-      id =++nextID;
+      id = ++nextID;
    }
    // Setters & Getter
    int getId()
@@ -81,7 +80,6 @@ public:
    }
 };
 int Person::nextID = 1000;
-
 
 class Parser
 {
