@@ -1,5 +1,9 @@
 #pragma once
 #include "FilesHelper.h"
+#include <string>
+#include <vector>
+using namespace std;
+
 class DataSourceInterface
 {
 public:
@@ -46,15 +50,15 @@ public:
 
     void removeAllClients()
     {
-        FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient");
+        FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient.txt");
     }
     void removeAllEmployees()
     {
-        FilesHelper::ClearFile("Data/Empolyees.txt", "Data/LastIdClient");
+        FilesHelper::ClearFile("Data/Employees.txt", "Data/LastIdEmp.txt");
     }
     void removeAllAdmin()
     {
-        FilesHelper::ClearFile("Data/Admins.txt", "Data/LastIdAdmin");
+        FilesHelper::ClearFile("Data/Admins.txt", "Data/LastIdAd.txt");
     }
     // static void updateClients() // not working
     // {

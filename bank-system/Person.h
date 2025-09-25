@@ -15,8 +15,9 @@ public:
    int id;
    static int nextID;
    string name;
+
    string pass;
-   Person() { }
+   Person() {}
    Person(string name, string pass)
    {
       while (!validator::isValidName(name))
@@ -77,24 +78,6 @@ public:
       cout << "ID: " << getId() << endl;
       cout << "Name: " << getName() << endl;
       cout << "Password: " << getPassword() << endl;
-   }
-};
-int Person::nextID = 1000;
-
-class Parser
-{
-public:
-   static vector<string> split(string &line)
-   {
-      vector<string> res;
-      stringstream ss(line); //---------------------------------------
-      string item;
-
-      while (getline(ss, item, ','))
-      {
-         res.push_back(item);
-      }
-      return res;
    }
 };
 

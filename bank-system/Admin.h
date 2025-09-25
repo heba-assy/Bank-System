@@ -1,11 +1,13 @@
 #ifndef ADMIN_H
 #define ADMIN_H
-#include "Validation.h"
-#include "Person.h"
+#pragma once
 #include "Client.h"
 #include "Employee.h"
 #include <fstream>
+#include <vector>
+#include <string>
 #include <iostream>
+#include "Parser.h"
 
 class Admin : public Employee
 {
@@ -13,6 +15,9 @@ private:
     double salary = 0;
 
 public:
+    Admin() {}
+    Admin(string name, string pass, double salary) : Employee(name, pass, salary) {}
+
     vector<Employee> allEmployees()
     {
         ifstream file("Data/Employees.txt");
@@ -25,23 +30,10 @@ public:
         string line;
         while (getline(file, line))
         {
-            emps.push_back(Employee::ParseToEmployee(line));
+            emps.push_back(Parser::parseToEmployee(line));
         }
         file.close();
         return emps;
-    }
-    Admin(){}
-    Admin(string name, string pass, double salary) : Employee(name, pass, salary) {}
-
-    static Admin parseToAdmin(string line)
-    {
-        vector<string> data = Parser::split(line);
-        // id=stoi(data[0]);
-        // return Admin( data[1], data[2], stod(data[3]));
-
-        Admin a(data[1], data[2], stod(data[3]));
-        a.id = stoi(data[0]);
-        return a;
     }
     void addEmployee(Employee &e)
     {
@@ -57,7 +49,7 @@ public:
             cout << "Failed to save!\n";
         }
 
-        ofstream file1("Data/LastIdEmployee.txt", ios::trunc);
+        ofstream file1("Data/LastIdEmp.txt", ios::trunc);
         if (file1.is_open())
         {
             file1 << e.getId();

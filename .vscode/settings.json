@@ -49,7 +49,20 @@
         "cstdarg": "cpp",
         "cstring": "cpp",
         "sstream": "cpp",
-        "*.mq5": "cpp"
+        "*.mq5": "cpp",
+        "charconv": "cpp",
+        "ctime": "cpp",
+        "format": "cpp",
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "text_encoding": "cpp",
+        "variant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cStandard": "c17"
+    
 }

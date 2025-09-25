@@ -1,10 +1,11 @@
 #ifndef CLIENT_H
 #define CLIENT_H
+#pragma once
 #include "Person.h"
-#include "Validation.h"
-#include <iostream>
 #include <fstream>
-#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
 
 class Client : public Person
 {
@@ -12,7 +13,7 @@ private:
    double balance = 0;
 
 public:
-   Client (): Person(){}
+   Client() : Person() {}
    Client(string name, string pass, double balance) : Person(name, pass)
    {
       if (!validator::isValidBalance(balance))
@@ -23,92 +24,17 @@ public:
    }
 
    // Setters & Getters
-   void setBalance(double balance)
-   {
-      if (!validator::isValidBalance(balance))
-      {
-         throw Invalid_Balance();
-         return;
-      }
-      else
-      {
-         this->balance = balance;
-      }
-   }
-   double getBalance()
-   {
-      return balance;
-   }
-   void deposit(double amount)
-   {
-      if (amount > 0)
-      {
-         balance += amount;
-         cout << "Deposit successful!" << endl;
-      }
-      else
-      {
-         cout << "Invalid deposit amount!" << endl;
-      }
-   }
-   void Withdraw(double amount)
-   {
-      if (amount > 0 && amount <= balance)
-      {
-         balance -= amount;
-      }
-      cout << "Insufficient funds or invalid amount!" << endl;
-   }
-   void transferTo(double amount, Client &recipient)
-   {
-      if (amount > 0 && amount <= balance)
-      {
-         recipient.deposit(amount);
-         balance -= amount;
-         cout << "Transfer successful!" << endl;
-      }
-      else
-      {
-         cout << "Insufficient funds or invalid amount!" << endl;
-      }
-   }
-   void checkBalance()
-   {
-      cout << "Your Balance is: " << balance << " Units." << endl;
-   }
-
-   string toStringC() const
-   {
-      return to_string(id) + "," + name + "," + pass + "," + to_string(balance);
-   }
-
-   static Client parseToClient(string line)
-   {
-      vector<string> data = Parser::split(line);
-      Client c; // stoi string to intger --stod string to double
-      c.balance=(stod(data[3]));
-      c.pass=(data[2]);
-      c.name=(data[1]);
-      c.id = stoi(data[0]);
-      return c;
-   }
-
-   friend std::ostream &operator<<(std::ostream &os, const Client &client) // to can use the operator (<<) in pointer client (*Client)
-   {
-      os << "Name: " << client.name << endl
-         << "ID: " << client.id << endl
-         << "Balance: " << client.balance << endl;
-
-      return os;
-   }
-
+   void setBalance(double balance);
+   double getBalance();
+   void deposit(double amount);
+   void Withdraw(double amount);
+   void transferTo(double amount, Client &recipient);
+   void checkBalance();
+   string toStringC() const;
    // Display
-   void Display()
-   {
-      Person::Display();
-      cout << "Balance: " << getBalance() << endl
-           << "---------------------" << endl;
-   }
+   void Display();
+
+   friend std::ostream &operator<<(std::ostream &os, const Client &client); // to can use the operator (<<) in pointer client (*Client)
 };
 
 #endif // CLIENT_H

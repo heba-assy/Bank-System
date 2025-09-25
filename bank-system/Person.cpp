@@ -1,3 +1,3 @@
 #include "Person.h"
 //=============Static Member====================
-// int Person::nextId =0;
+int Person::nextID = 1000;
