@@ -50,15 +50,15 @@ public:
 
     void removeAllClients()
     {
-        FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient.txt");
+        FilesHelper::ClearFile("Data/Clients.txt", "Data/LastIdClient");
     }
     void removeAllEmployees()
     {
-        FilesHelper::ClearFile("Data/Employees.txt", "Data/LastIdEmp.txt");
+        FilesHelper::ClearFile("Data/Empolyees.txt", "Data/LastIdClient");
     }
     void removeAllAdmin()
     {
-        FilesHelper::ClearFile("Data/Admins.txt", "Data/LastIdAd.txt");
+        FilesHelper::ClearFile("Data/Admins.txt", "Data/LastIdAdmin");
     }
     // static void updateClients() // not working
     // {

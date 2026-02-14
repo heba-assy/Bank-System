@@ -15,8 +15,8 @@ public:
    int id;
    static int nextID;
    string name;
-
    string pass;
+
    Person() {}
    Person(string name, string pass)
    {
@@ -34,7 +34,6 @@ public:
       }
       this->name = name;
       this->pass = pass;
-      // nextID += rand() % 100 + 1; // To make ID increase rand between 1 to 100
       id = ++nextID;
    }
    // Setters & Getter

@@ -1,8 +1,8 @@
+#include "FileManager.h"
 #include "ClientManager.h"
 #include "Client.h"
 #include "Employee.h"
 #include "Person.h"
-#include "FileManager.h"
 
 void ClientManager::back(Client *client)
 {
@@ -37,7 +37,6 @@ Client *ClientManager::login(int id, string pass)
     return nullptr;
 }
 bool ClientManager::clientOptions(Client *c)
-
 {
     int num = 0;
     Employee e;

@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
 
-class Client;
-class Employee;
-class Admin;
 using namespace std;
 
 class FilesHelper
@@ -21,9 +21,10 @@ public:
     static void saveClient(Client &c);
     static void saveEmployee(Employee &E);
     static void SaveAdmin(const Admin &admin);
-    static void getClients();
-    static void getEmployees();
-    static void getAdmins();
+    static vector<Client> getClients();
+    static vector<Employee> getEmployees();
+    static vector<Admin> getAdmins();
     static void ClearFile(string fileName, string lastidfile);
 };
+
 #endif // FILESHELPER_H

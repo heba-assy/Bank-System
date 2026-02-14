@@ -4,9 +4,6 @@
 #include "Client.h"
 #include "Employee.h"
 #include <fstream>
-#include <vector>
-#include <string>
-#include <iostream>
 #include "Parser.h"
 
 class Admin : public Employee
@@ -49,7 +46,7 @@ public:
             cout << "Failed to save!\n";
         }
 
-        ofstream file1("Data/LastIdEmp.txt", ios::trunc);
+        ofstream file1("Data/LastIdEmployee.txt", ios::trunc);
         if (file1.is_open())
         {
             file1 << e.getId();

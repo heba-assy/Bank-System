@@ -1,16 +1,17 @@
 #include "FilesHelper.h"
 #include <vector>
 #include "Client.h"
-#include "Employee.h"
 #include "Admin.h"
 #include "Parser.h"
 
 using namespace std;
 
+int FilesHelper::lastid = 1000;
+
 int FilesHelper::getlastid(string filename)
 {
     ifstream file(filename);
-    int maxid = 999; // Start at 999 so first ID will be 1000
+    int maxid = 1000;
     string line;
 
     if (file.is_open())
@@ -35,7 +36,6 @@ int FilesHelper::getlastid(string filename)
     }
     return maxid;
 }
-int FilesHelper::lastid = 1000;
 void FilesHelper::saveLast(string filename, int id)
 {
     ofstream file(filename, ios::trunc);
@@ -60,9 +60,12 @@ int FilesHelper::getLast(string filename)
 }
 void FilesHelper::saveClient(Client &c) // to Create file -- ios ::app to save all data
 {
-    // Get the last used ID and increment it
-    int newId = getlastid("Data/Clients.txt") + 1;
-    c.setId(newId);
+    Employee e;
+    if (!e.SearchClient(c.getId()) == 0)
+    {
+        cout << "The Client Already Exists!" << endl;
+        return;
+    }
 
     ofstream file("Data/Clients.txt", ios::app);
     if (file.is_open())
@@ -71,7 +74,7 @@ void FilesHelper::saveClient(Client &c) // to Create file -- ios ::app to save a
         file.close();
         cout << "Data Saved!\n";
 
-        FilesHelper::saveLast("Data/LastIdClient.txt", c.getId());
+        FilesHelper::saveLast("Data/LastIdClient.txt", c.id);
     }
     else
     {
@@ -93,7 +96,7 @@ void FilesHelper::saveEmployee(Employee &E)
         file << E.toString() << endl;
         file.close();
         cout << "Data Saved!\n";
-                FilesHelper::saveLast("Data/LastIdEmp.txt", E.getId());
+        FilesHelper::saveLast("Data/LastIdEmp.txt", E.id);
     }
     else
     {
@@ -108,7 +111,7 @@ void FilesHelper::SaveAdmin(const Admin &admin)
         file << admin.toString() << endl;
         file.close();
         cout << "Data Saved!\n";
-        FilesHelper::saveLast("Data/LastIdAd.txt", admin.getId());
+        FilesHelper::saveLast("Data/LastIdAd.txt", admin.id);
     }
     else
     {
@@ -116,69 +119,67 @@ void FilesHelper::SaveAdmin(const Admin &admin)
     }
 }
 // static vector<Client> AllClients;
-void FilesHelper::getClients()
+vector<Client> FilesHelper::getClients()
 {
+    vector<Client> clients;
     ifstream file("Data/Clients.txt");
     if (!file)
     {
         cout << "The File isn't Exist" << endl;
-        return;
+        return clients;
     }
-    // AllClients.clear();
-    vector<Client> clients;
+    
     string line;
     while (getline(file, line))
     {
         Client c = Parser::parseToClient(line);
         clients.push_back(c);
     }
-    // AllClients = clients;
 
     file.close();
-
-    for (Client &c : clients)
-    {
-        c.Display();
-    }
+    return clients;
 }
-void FilesHelper::getEmployees()
+vector<Employee> FilesHelper::getEmployees()
 {
-    ifstream Efile("Data/Employees.txt");
     vector<Employee> Employees;
+    ifstream Efile("Data/Employees.txt");
+    if (!Efile)
+    {
+        cout << "The Employee File doesn't exist" << endl;
+        return Employees;
+    }
+    
     string line;
     while (getline(Efile, line))
     {
         Employees.push_back(Parser::parseToEmployee(line));
     }
     Efile.close();
-    for (Employee &e : Employees)
-    {
-        e.Display();
-    }
+    return Employees;
 }
-void FilesHelper::getAdmins()
+
+vector<Admin> FilesHelper::getAdmins()
 {
-    ifstream Afile("Data/Admins.txt");
     vector<Admin> Admins;
+    ifstream Afile("Data/Admins.txt");
+    if (!Afile)
+    {
+        cout << "The Admin File doesn't exist" << endl;
+        return Admins;
+    }
+    
     string line;
     while (getline(Afile, line))
     {
         Admins.push_back(Parser::parseToAdmin(line));
     }
-    for (Admin &a : Admins)
-    {
-        a.Display();
-    }
+    Afile.close();
+    return Admins;
 }
 void FilesHelper::ClearFile(string fileName, string lastidfile)
 {
     ofstream file(fileName, ios::trunc);
-    if (!file.is_open()) {
-        cout << "Failed to clear file: " << fileName << endl;
-        return;
-    }
+    FilesHelper::saveLast(lastidfile, FilesHelper::getLast(fileName) - FilesHelper::getLast(fileName));
     file.close();
-    
-    FilesHelper::saveLast(lastidfile, 999); // Reset ID counter to start fresh at 1000
-    cout << "Data Cleared in " << fileName << endl;
+    cout << "Data Cleared!" << endl;
 }

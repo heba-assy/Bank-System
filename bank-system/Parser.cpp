@@ -18,30 +18,21 @@ vector<string> Parser::split(string &line)
 Client Parser::parseToClient(string line)
 {
     vector<string> data = Parser::split(line);
-    Client c;
-    c.setName(data[1]);
-    c.setPassword(data[2]);
-    c.setBalance(stod(data[3]));
-    c.setId(stoi(data[0]));
+    Client c(data[1], data[2], stod(data[3]));
+    c.id = stoi(data[0]);
     return c;
 }
 Employee Parser::parseToEmployee(string line)
 {
     vector<string> data = Parser::split(line);
-    Employee emp;
-    emp.setName(data[1]);
-    emp.setPassword(data[2]);
-    emp.setSalary(stod(data[3]));
-    emp.setId(stoi(data[0]));
+    Employee emp(data[1], data[2], stod(data[3]));
+    emp.id = stoi(data[0]);
     return emp;
 }
 Admin Parser::parseToAdmin(string line)
 {
     vector<string> data = Parser::split(line);
-    Admin a;
-    a.setName(data[1]);
-    a.setPassword(data[2]);
-    a.setSalary(stod(data[3]));
-    a.setId(stoi(data[0]));
+    Admin a(data[1], data[2], stod(data[3]));
+    a.id = stoi(data[0]);
     return a;
 }

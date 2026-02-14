@@ -1,6 +1,5 @@
 #include "Client.h"
 #include "Person.h"
-
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -40,7 +39,7 @@
         if (amount > 0 && amount <= balance)
         {
             balance -= amount;
-            cout << "Withdrawal successful!\n";
+            cout << "Withdrawal successful!" << endl;
         }
         else
         {
@@ -68,13 +67,13 @@
     {
         return to_string(id) + "," + name + "," + pass + "," + to_string(balance);
     }
-    friend std::ostream &operator<<(std::ostream &os, const Client &client) // to can use the operator (<<) in pointer client (*Client)
-    {
-        os << "Name: " << client.name << endl
-           << "ID: " << client.id << endl
-           << "Balance: " << client.balance << endl;
-        return os;
-    }
+std::ostream &operator<<(std::ostream &os, const Client &client) // to can use the operator (<<) in pointer client (*Client)
+{
+    os << "Name: " << client.name << endl
+       << "ID: " << client.id << endl
+       << "Balance: " << client.balance << endl;
+    return os;
+}
     // Display
     void Client::Display()
     {
